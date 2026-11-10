@@ -441,8 +441,8 @@ function asDayString(when: Date) {
 }
 
 /**
- * What the learner is offered if they want their money back, or null if this
- * purchase cannot be cancelled.
+ * The Cancellation the learner may request, or null if this purchase cannot
+ * be cancelled.
  */
 function getCancellationOffer(
   userId: number,
@@ -1024,8 +1024,8 @@ function CancelPurchase({ slug, amount }: { slug: string; amount: number }) {
     <div className="border-t pt-4">
       <p className="mb-2 text-sm font-medium">Cancel my purchase</p>
       <p className="mb-3 text-xs text-muted-foreground">
-        We will send {formatPrice(amount)} back to the card you paid with, once
-        someone has read your note.
+        If we approve your Cancellation, we will refund {formatPrice(amount)} to
+        the card you paid with. Our team reviews every Cancellation by hand.
       </p>
       <fetcher.Form
         method="post"
@@ -1036,11 +1036,11 @@ function CancelPurchase({ slug, amount }: { slug: string; amount: number }) {
           name="reason"
           rows={3}
           required
-          placeholder="What went wrong?"
+          placeholder="Why do you want to cancel?"
         />
         <div className="flex gap-2">
           <Button type="submit" size="sm" disabled={isSubmitting}>
-            {isSubmitting ? "Sending..." : "Cancel my purchase"}
+            {isSubmitting ? "Requesting..." : "Request cancellation"}
           </Button>
           <Button
             type="button"
